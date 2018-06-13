@@ -5,6 +5,8 @@
 cd src
 composer update
 php artisan serve
+php artisan migrate
+
 ```
 
 
