@@ -23,3 +23,6 @@ Route::get('/home', 'Admin\IndexController@index')->name('home');
 
 //Admin
 Route::get('/admin', 'Admin\IndexController@index')->name('admin_index');
+
+//Admin
+Route::get('/admin/user', 'Admin\UserController@index')->name('user_index');

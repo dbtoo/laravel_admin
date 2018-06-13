@@ -15,9 +15,8 @@
     <link href="/dist/vendors/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
     <link href="/dist/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="/dist/vendors/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
-    <!-- Main styles for this application-->
-    <link href="/dist/css/style.css" rel="stylesheet">
-    <link href="/dist/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
+    @yield('admin-css-part')
+
 </head>
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
 <header class="app-header navbar">
@@ -97,7 +96,7 @@
                 </li>
                 <li class="nav-title">会员</li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('user_index') }}">
                         <i class="nav-icon icon-drop"></i> 会员管理</a>
                 </li>
                 <li class="nav-item">
@@ -435,9 +434,6 @@
 <script src="/dist/vendors/pace-progress/js/pace.min.js"></script>
 <script src="/dist/vendors/perfect-scrollbar/js/perfect-scrollbar.min.js"></script>
 <script src="/dist/vendors/@coreui/coreui/js/coreui.min.js"></script>
-<!-- Plugins and scripts required by this view-->
-<script src="/dist/vendors/chart.js/js/Chart.min.js"></script>
-<script src="/dist/vendors/@coreui/coreui-plugin-chartjs-custom-tooltips/js/custom-tooltips.min.js"></script>
-<script src="/dist/js/main.js"></script>
+@yield('admin-js-part')
 </body>
 </html>

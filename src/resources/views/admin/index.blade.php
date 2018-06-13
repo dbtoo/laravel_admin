@@ -534,6 +534,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    
                                     <tr>
                                         <td class="text-center">
                                             <div class="avatar">
@@ -769,4 +770,19 @@
 
         </div>
     </main>
+    @endsection
+
+
+@section('admin-js-part')
+    <!-- Plugins and scripts required by this view-->
+    <script src="/dist/vendors/chart.js/js/Chart.min.js"></script>
+    <script src="/dist/vendors/@coreui/coreui-plugin-chartjs-custom-tooltips/js/custom-tooltips.min.js"></script>
+    <script src="/dist/js/main.js"></script>
+    @endsection
+
+
+@section('admin-css-part')
+    <!-- Main styles for this application-->
+    <link href="/dist/css/style.css" rel="stylesheet">
+    <link href="/dist/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
     @endsection
