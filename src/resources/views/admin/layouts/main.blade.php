@@ -89,7 +89,7 @@
         <nav class="sidebar-nav">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="/admin">
                         <i class="nav-icon icon-speedometer"></i> 总览
                         <span class="badge badge-primary">NEW</span>
                     </a>
