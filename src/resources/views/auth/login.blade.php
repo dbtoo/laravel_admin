@@ -24,7 +24,7 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                         <h1>登陆</h1>
-                        <p class="text-muted">Sign In to your account</p>
+                        <p class="text-muted">后台管理</p>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                     <span class="input-group-text">
@@ -68,8 +68,8 @@
                 <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
                     <div class="card-body text-center">
                         <div>
-                            <h2>注册</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <h2>免责协议</h2>
+                            <p>对于因不可抗力或本站不能控制的原因造成的网络服务中断或其它缺陷，本站不承担任何责任，但将尽力减少因此而给用户造成的损失和影响。</p>
                             <button type="button" class="btn btn-primary active mt-3">马上注册!</button>
                         </div>
                     </div>
