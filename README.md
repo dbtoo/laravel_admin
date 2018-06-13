@@ -1,5 +1,3 @@
-# laravel_admin
-
 
 # src
 
@@ -10,7 +8,7 @@ php artisan serve
 ```
 
 
-#ui
+# ui
 
 ```php
 cd ui
