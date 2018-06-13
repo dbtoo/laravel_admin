@@ -534,7 +534,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    
+
                                     <tr>
                                         <td class="text-center">
                                             <div class="avatar">

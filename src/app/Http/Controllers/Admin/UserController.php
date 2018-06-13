@@ -24,7 +24,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = DB::table('users')->paginate(15);
+        $users = [];
+        //$users = DB::table('users')->paginate(15);
         return view('admin.user.index',['users' => $users]);
     }
 }
