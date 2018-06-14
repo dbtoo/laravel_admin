@@ -26,3 +26,6 @@ Route::get('/admin', 'Admin\IndexController@index')->name('admin_index');
 
 //Admin
 Route::get('/admin/user', 'Admin\UserController@index')->name('user_index');
+Route::post('/admin/user', 'Admin\UserController@index')->name('user_index');//用户list
+Route::get('/admin/addUser', 'Admin\UserController@addUser')->name('user_addUser');//跳转用户添加或者编辑页面
+Route::post('/admin/savaUser', 'Admin\UserController@savaUser')->name('user_savaUser');//保存用户

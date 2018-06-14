@@ -1,0 +1,22 @@
+# Host: localhost  (Version: 5.5.53)
+# Date: 2018-06-14 18:17:36
+# Generator: MySQL-Front 5.3  (Build 4.234)
+
+/*!40101 SET NAMES utf8 */;
+
+#
+# Structure for table "t_user"
+#
+
+CREATE TABLE `t_user` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主id',
+  `username` varchar(50) NOT NULL DEFAULT '' COMMENT '昵称',
+  `password` varchar(50) NOT NULL DEFAULT '' COMMENT '密码',
+  `phone` varchar(20) NOT NULL DEFAULT '' COMMENT '手机号',
+  `card` varchar(50) NOT NULL DEFAULT '' COMMENT '身份证',
+  `avatar` varchar(255) DEFAULT NULL COMMENT '头像',
+  `sesame` varchar(50) DEFAULT '' COMMENT '芝麻信用',
+  `create_time` int(11) NOT NULL DEFAULT '0',
+  `status` tinyint(3) NOT NULL DEFAULT '0' COMMENT '状态：1.正常，2.冻结，',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;

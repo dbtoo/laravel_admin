@@ -31,81 +31,49 @@
                         <div class="card">
                             <div class="card-header">
                                 <i class="fa fa-align-justify"></i> 会员列表
+                                <a href="/admin/addUser">添加用户</a>
                             </div>
+
                             <div class="card-body">
+                                <form action='/admin/user' method="post"> @csrf
+                                昵称：<input type="text" name="username" id="username" placeholder="昵称">
+                                手机号：<input type="text" name="phone" id="phone" placeholder="手机号">
+                                <input type="submit"   value="搜索">
+                                </form>
                                 <table class="table table-responsive-sm table-bordered table-striped table-sm">
                                     <thead>
                                     <tr>
-                                        <th>Username</th>
-                                        <th>Date registered</th>
-                                        <th>Role</th>
-                                        <th>Status</th>
+                                        <th>ID</th>
+                                        <th>昵称</th>
+                                        <th>手机号</th>
+                                        <th>身份证</th>
+                                        <th>芝麻信用</th>
+                                        <th>创建时间</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach ($users as $user)
                                     <tr>
-                                        <td>Vishnu Serghei</td>
-                                        <td>2012/01/01</td>
-                                        <td>Member</td>
+                                        <td>{{$user->id }}</td>
+                                        <td>{{ $user->username }}</td>
+                                        <td>{{ $user->phone }}</td>
+                                        <td>{{ $user->card }}</td>
+                                        <td>{{ $user->sesame }}</td>
+                                        <td>{{ intval($user->create_time)>0 ? date("Y-m-d H:i:s",$user->create_time):'' }}</td>
                                         <td>
-                                            <span class="badge badge-success">Active</span>
+                                            <span class="badge badge-success">{{ $status[$user->status] }}</span>
                                         </td>
+                                        <td><a href="#">更改状态</a>
+                                        <a href="/admin/addUser?id={{$user->id}}">编辑</a></td>
                                     </tr>
-                                    <tr>
-                                        <td>Zbyněk Phoibos</td>
-                                        <td>2012/02/01</td>
-                                        <td>Staff</td>
-                                        <td>
-                                            <span class="badge badge-danger">Banned</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Einar Randall</td>
-                                        <td>2012/02/01</td>
-                                        <td>Admin</td>
-                                        <td>
-                                            <span class="badge badge-secondary">Inactive</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Félix Troels</td>
-                                        <td>2012/03/01</td>
-                                        <td>Member</td>
-                                        <td>
-                                            <span class="badge badge-warning">Pending</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Aulus Agmundr</td>
-                                        <td>2012/01/21</td>
-                                        <td>Staff</td>
-                                        <td>
-                                            <span class="badge badge-success">Active</span>
-                                        </td>
-                                    </tr>
+                                    @endforeach
+
                                     </tbody>
                                 </table>
                                 <nav>
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">Prev</a>
-                                        </li>
-                                        <li class="page-item active">
-                                            <a class="page-link" href="#">1</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">2</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">3</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">4</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">Next</a>
-                                        </li>
-                                    </ul>
+                                       {{$users ->links()}}
                                 </nav>
                             </div>
                         </div>
