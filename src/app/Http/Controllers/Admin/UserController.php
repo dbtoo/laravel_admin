@@ -65,10 +65,8 @@ class UserController extends Controller
         $password = $request->input('password');
         $phone = $request->input('phone');
         $card = $request->input('card');
-        $avatar = $request->input('avatar');
         $status = $request->input('status');
         $status=empty($status)?2:$status;
-
         if (empty($card)) {
             return redirect('/admin/addUser?id=' . $id)->withErrors(['身份证为空']);
         }
@@ -84,11 +82,17 @@ class UserController extends Controller
             $users = new User();
 
         }
+        //头像上传
+        if($request->hasFile('avatar')){
+
+            $imageName = time().'.'.$request->avatar->getClientOriginalExtension();
+            $request->avatar->move(public_path('/upload'),$imageName);
+            $users->avatar = $imageName;
+        }
         $users->username = $username;
         $users->password = $password;
         $users->phone = $phone;
         $users->card = $card;
-        $users->avatar = $avatar;
         $users->status = $status;
         $users->save();
 

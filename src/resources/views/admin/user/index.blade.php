@@ -68,12 +68,12 @@
                                         <td>{{$user->created_at}} </td>
                                         <td>{{$user->updated_at}} </td>
                                         <td>
-                                            {{--@if({{ $user->status==0 }})--}}
-                                            <span class="badge badge-success"> {{ $status[$user->status] }}</span>
-                                                {{--@else--}}
-                                                    {{--<span class="badge badge-danger"> ${{ $status[$user->status] }}</span>--}}
-                                                        {{--@endif--}}
-                                               {{--}--}}
+                                            @if($user->status==1)
+                                                <span class="badge badge-success"> {{ $status[$user->status] }}</span>
+                                            @else
+                                                <span class="badge badge-danger"> {{ $status[$user->status] }}</span>
+                                            @endif
+
                                         </td>
                                         <td><a href="/admin/statusUser?id={{$user->id}}">更改状态</a>
                                         <a href="/admin/addUser?id={{$user->id}}">编辑</a>

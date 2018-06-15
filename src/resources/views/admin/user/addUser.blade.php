@@ -28,7 +28,7 @@
             @endif
 
             <div class="animated fadeIn">
-                <form method="post" action="/admin/savaUser">
+                <form method="post" action="/admin/savaUser"   enctype="multipart/form-data">
                     @csrf
                 <input type="hidden" name="id" value="{{$users->id}}" >
 
@@ -69,10 +69,8 @@
                     <label class="col-form-label" for="appendedInputButton">头像</label>
                     <div class="controls">
                         <div class="input-group">
-                            <input id="appendedInputButton" name="avatar" class="form-control" size="16" type="text" value="{{$users->avatar}}">
-                            <span class="input-group-append">
-                              <button class="btn btn-secondary" type="button">Go!</button>
-                            </span>
+                            <img src="/upload/{{ $users->avatar }}"  style="width: 50px;height: 50px"/>
+                            <input id="appendedInputButton" name="avatar" class="form-control" size="16" type="file" value="{{$users->avatar}}">
                         </div>
                     </div>
                 </div>
