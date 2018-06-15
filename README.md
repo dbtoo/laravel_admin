@@ -4,6 +4,7 @@
 ```php
 cd src
 composer update
+php artisan key:generate
 php artisan serve
 php artisan migrate
 
