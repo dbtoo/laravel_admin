@@ -23,8 +23,15 @@
             </li>
         </ol>
         <div class="container-fluid">
+            @if($errors->any())
+            <div class="alert alert-danger" role="alert">{{$errors->first()}}</div>
+            @endif
+
             <div class="animated fadeIn">
-                <input type="hidden" name="id" >
+                <form method="post" action="/admin/savaUser">
+                    @csrf
+                <input type="hidden" name="id" value="{{$users->id}}" >
+
                 <div class="form-group">
                     <label class="col-form-label" for="appendedInput">昵称</label>
                     <div class="controls">

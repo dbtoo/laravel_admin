@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-   private $status=['1'=>'正常','2'=>'冻结'];
+    private $status = ['1' => '正常', '2' => '冻结'];
+
     /**
      * Create a new controller instance.
      *
@@ -58,6 +59,7 @@ class UserController extends Controller
 
     public function savaUser(Request $request)
     {
+
         $id = intval($request->input('id'));
         $username = $request->input('username');
         $password = $request->input('password');
@@ -65,22 +67,62 @@ class UserController extends Controller
         $card = $request->input('card');
         $avatar = $request->input('avatar');
         $status = $request->input('status');
+        $status=empty($status)?2:$status;
 
-        $users = User::findOrFail($id);
-        $data=array(
-            'id'=>$id>0?$users['id']:$id,
-            'username'=>$users['username'],
-            'password'=>$users['password'],
-            'phone'=>$users['phone'],
-            'card'=>$users['card'],
-            'avatar'=>$users['avatar'],
-            'status'=>$users['status'],
-        );
-        if ($id>0){
-            User::updated($data);
-        }else{
+        if (empty($card)) {
+            return redirect('/admin/addUser?id=' . $id)->withErrors(['身份证为空']);
+        }
+        if ($id==0) {
+            $phonelist = User::where('phone', '=', $phone)->count();
+            if ($phonelist > 0) {
+                return redirect('/admin/addUser?id=' . $id)->withErrors(['手机号重复']);
+            }
+        }
+        if ($id > 0) {
+            $users = User::find($id);
+        } else {
+            $users = new User();
 
         }
+        $users->username = $username;
+        $users->password = $password;
+        $users->phone = $phone;
+        $users->card = $card;
+        $users->avatar = $avatar;
+        $users->status = $status;
+        $users->save();
+
+        return redirect('/admin/user');
     }
+
+    /**
+     * 删除用户
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function delUser(Request $request)
+    {
+        $id = intval($request->input('id'));
+        if ($id>0){
+            $user = User::find($id);
+            $user->delete();
+        }
+        return redirect('/admin/user')->withErrors(['删除成功']);
+    }
+
+    /**
+     * 更改用户状态
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function statusUser(Request $request)
+    {
+        $id = intval($request->input('id'));
+        $user = User::find($id);
+        $status=$user['status']==1?2:1;
+        $user->status = $status;
+        $user->save();
+        return redirect('/admin/user')->withErrors(['更改成功']);
+    }
+
 }
-;

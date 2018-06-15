@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    //return view('welcome');
+   // return view('welcome');
     return  redirect("/login");
 });
 
@@ -29,3 +29,7 @@ Route::get('/admin/user', 'Admin\UserController@index')->name('user_index');
 Route::post('/admin/user', 'Admin\UserController@index')->name('user_index');//用户list
 Route::get('/admin/addUser', 'Admin\UserController@addUser')->name('user_addUser');//跳转用户添加或者编辑页面
 Route::post('/admin/savaUser', 'Admin\UserController@savaUser')->name('user_savaUser');//保存用户
+Route::get('/admin/delUser', 'Admin\UserController@delUser')->name('user_delUser');//删除用户
+Route::get('/admin/statusUser', 'Admin\UserController@statusUser')->name('user_statusUser');//删除用户
+
+

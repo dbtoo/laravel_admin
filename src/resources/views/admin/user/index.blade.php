@@ -25,13 +25,16 @@
         <div class="container-fluid">
             <div class="animated fadeIn">
 
-
+                @if($errors->any())
+                    <div class="alert alert-success" role="alert">{{$errors->first()}}</div>
+                @endif
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
                                 <i class="fa fa-align-justify"></i> 会员列表
                                 <a href="/admin/addUser">添加用户</a>
+                                <div >{{Session::get('massage')}}</div>
                             </div>
 
                             <div class="card-body">
@@ -49,6 +52,7 @@
                                         <th>身份证</th>
                                         <th>芝麻信用</th>
                                         <th>创建时间</th>
+                                        <th>更新时间</th>
                                         <th>状态</th>
                                         <th>操作</th>
                                     </tr>
@@ -61,12 +65,19 @@
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ $user->card }}</td>
                                         <td>{{ $user->sesame }}</td>
-                                        <td>{{ intval($user->create_time)>0 ? date("Y-m-d H:i:s",$user->create_time):'' }}</td>
+                                        <td>{{$user->created_at}} </td>
+                                        <td>{{$user->updated_at}} </td>
                                         <td>
-                                            <span class="badge badge-success">{{ $status[$user->status] }}</span>
+                                            {{--@if({{ $user->status==0 }})--}}
+                                            <span class="badge badge-success"> {{ $status[$user->status] }}</span>
+                                                {{--@else--}}
+                                                    {{--<span class="badge badge-danger"> ${{ $status[$user->status] }}</span>--}}
+                                                        {{--@endif--}}
+                                               {{--}--}}
                                         </td>
-                                        <td><a href="#">更改状态</a>
-                                        <a href="/admin/addUser?id={{$user->id}}">编辑</a></td>
+                                        <td><a href="/admin/statusUser?id={{$user->id}}">更改状态</a>
+                                        <a href="/admin/addUser?id={{$user->id}}">编辑</a>
+                                        <a href="/admin/delUser?id={{$user->id}}">删除</a></td>
                                     </tr>
                                     @endforeach
 
